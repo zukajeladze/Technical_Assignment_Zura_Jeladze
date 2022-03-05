@@ -32,11 +32,12 @@ function App() {
   };
 
   console.log(data);
-  console.log(isLoading);
+  // console.log(isLoading);
 
   return (
     <Container>
       <InputContainer>
+        <h2>Welcome to Zuka's search</h2>
         <Input
           type="text"
           name="search"
@@ -58,7 +59,11 @@ function App() {
                 <Item key={index} onClick={() => openProfile(item.html_url)}>
                   <img
                     alt="avatar"
-                    style={{ height: "50px", borderRadius: "100%" }}
+                    style={{
+                      height: "50px",
+                      borderRadius: "100%",
+                      marginLeft: "1em",
+                    }}
                     src={item.avatar_url}
                   ></img>{" "}
                   <p>{item.login}</p>
@@ -80,13 +85,21 @@ const Container = styled.div`
 `;
 
 const InputContainer = styled.div`
-  height: 400px;
+  height: 500px;
   width: 400px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   gap: 2px;
   display: grid;
-  grid-template-rows: 20% 1fr;
+  grid-template-rows: auto 12% 1fr;
   border-radius: 5px;
+  align-items: center;
+
+  h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #00008b;
+  }
 `;
 
 const Input = styled.input`
@@ -94,9 +107,9 @@ const Input = styled.input`
   width: 90%;
   padding: 0;
   margin: auto;
-  margin-top: 20px;
   padding: 3px;
   border-radius: 3px;
+  border: 2px solid #ccc;
   .no-outline:focus {
     outline: none;
   }
@@ -111,6 +124,18 @@ const Results = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 19px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
   margin-top: 1em;
 `;
 
@@ -122,7 +147,7 @@ const Item = styled.div`
   align-items: center;
   cursor: pointer;
   :hover {
-    background-color: #ccc;
+    background-color: #cccccc;
   }
   p {
     margin-left: 2em;
